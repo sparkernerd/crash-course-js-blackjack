@@ -1,30 +1,32 @@
 
 // Remember, this is just ONE POSSIBLE solution!
 
-var cards = [ '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A' ];
+var deck = [ '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A' ];
 
 var resultElement = document.getElementById('result');
 var cardDisplay = document.getElementById('cards');
 
 document.getElementById('deal').addEventListener('click', deal);
-document.getElementById('hit').addEventListener('click', hit);
+document.getElementById('hit').addEventListener('click', addCard);
+
 
 function deal() {
     resultElement.innerText = '';
 
-    var allCards = document.getElementsByClassName('card');
-    for (var i = allCards.length - 1; i > -1; i--) {
-        cardDisplay.removeChild( allCards[ i ] );
+    var currentCards = document.getElementsByClassName('card');
+    for (var i = currentCards.length - 1; i > -1; i--) {
+        cardDisplay.removeChild( currentCards[ i ] );
     }
 
-    hit();
-    hit();
+    addCard();
+    addCard();
     checkGameStatus();
 }
 
-function hit() {
-    var randomNumber = Math.floor(Math.random() * cards.length);
-    var newCard = cards[ randomNumber ];
+
+function addCard() {
+    var randomNumber = Math.floor(Math.random() * deck.length);
+    var newCard = deck[ randomNumber ];
 
     var newCardElement = document.createElement('figure');
     newCardElement.classList.add('card');
@@ -36,14 +38,12 @@ function hit() {
 
 
 function checkGameStatus() {
-    var allCards = document.getElementsByClassName('card');
-
-    console.log('Cards: ', allCards);
+    var currentCards = document.getElementsByClassName('card');
 
     var totalValue = 0;
 
-    for (var i = 0; i < allCards.length; i++) {
-        totalValue = totalValue + getCardValue( allCards[ i ] );
+    for (var i = 0; i < currentCards.length; i++) {
+        totalValue = totalValue + getCardValue( currentCards[ i ] );
     }
 
     if ( totalValue === 21 ) {
