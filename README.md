@@ -24,3 +24,7 @@ Your goal for this assignment is to make the BlackJack game work! Here are thing
   * Be sure to check to see if they have BlackJack each time they hit a card!
 
 ### Good Luck!
+
+### Want to skip to the end?
+
+If you want to peek at one possible solution, [check out the `solution` branch by clicking here](https://github.com/TIYDC/crash-course-js-blackjack/blob/solution/blackjack.js).
